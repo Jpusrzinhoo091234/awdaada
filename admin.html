@@ -3,32 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CartoonMax - Painel Administrativo</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Painel Administrativo - CartoonMax</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap">
 </head>
-<body class="admin-body">
-    <header class="admin-header">
-        <div class="logo">
-            <h1>Cartoon<span>Max</span> Admin</h1>
+<body>
+    <div class="admin-container">
+        <div class="admin-sidebar">
+            <div class="admin-logo">
+                <h2>CartoonMax</h2>
+            </div>
+            <nav class="admin-nav">
+                <a href="#" class="nav-link active" data-tab="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-link" data-tab="products">
+                    <i class="fas fa-box"></i>
+                    <span>Produtos</span>
+                </a>
+                <a href="#" class="nav-link" data-tab="orders">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Pedidos</span>
+                </a>
+                <a href="#" class="nav-link" data-tab="users">
+                    <i class="fas fa-users"></i>
+                    <span>Usuários</span>
+                </a>
+                <a href="#" class="nav-link" data-tab="chat">
+                    <i class="fas fa-comments"></i>
+                    <span>Chat</span>
+                    <span class="nav-badge">0</span>
+                </a>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Voltar para Loja</a></li>
-                <li><button class="logout-btn">Sair <i class="fas fa-sign-out-alt"></i></button></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="admin-main">
-        <section class="admin-section">
-            <h2 class="section-title">Gerenciar Produtos</h2>
+        <div class="admin-content">
+            <header class="admin-header">
+                <div class="admin-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar...">
+                </div>
+                <div class="admin-user">
+                    <div class="admin-notifications">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="admin-profile">
+                        <span id="admin-name">Admin</span>
+                        <button id="admin-logout-btn">Sair</button>
+                    </div>
+                </div>
+            </header>
             
-            <div class="admin-card">
-                <h3>Adicionar Novo Produto</h3>
-                <form id="add-product-form">
+            <!-- Dashboard Tab -->
+            <div id="dashboard-tab" class="admin-tab active">
+                <h2 class="tab-title">Dashboard</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Produtos</h3>
+                            <p id="total-products">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Pedidos</h3>
+                            <p id="total-orders">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Usuários</h3>
+                            <p id="total-users">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Receita</h3>
+                            <p id="total-revenue">R$ 0.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-charts">
+                    <div class="chart-card">
+                        <h3>Vendas Recentes</h3>
+                        <div id="recent-sales" class="sales-list">
+                            <!-- Sales will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Produtos Populares</h3>
+                        <div class="popular-products">
+                            <div class="product-item">
+                                <div class="product-icon">🎮</div>
+                                <div class="product-info">
+                                    <h4>Minecraft Premium</h4>
+                                    <div class="product-progress">
+                                        <div class="progress-bar" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div class="product-sales">75%</div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-icon">🎁</div>
+                                <div class="product-info">
+                                    <h4>Gift Card Steam</h4>
+                                    <div class="product-progress">
+                                        <div class="progress-bar" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                <div class="product-sales">60%</div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-icon">👥</div>
+                                <div class="product-info">
+                                    <h4>Seguidores Instagram</h4>
+                                    <div class="product-progress">
+                                        <div class="progress-bar" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                                <div class="product-sales">45%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products Tab -->
+            <div id="products-tab" class="admin-tab">
+                <div class="tab-header">
+                    <h2 class="tab-title">Produtos</h2>
+                    <button id="add-product-btn" class="btn-primary">
+                        <i class="fas fa-plus"></i> Adicionar Produto
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Categoria</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-table-body">
+                            <!-- Products will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Orders Tab -->
+            <div id="orders-tab" class="admin-tab">
+                <div class="tab-header">
+                    <h2 class="tab-title">Pedidos</h2>
+                    <div class="filter-container">
+                        <label for="order-status-filter">Status:</label>
+                        <select id="order-status-filter">
+                            <option value="all">Todos</option>
+                            <option value="pending">Pendentes</option>
+                            <option value="approved">Aprovados</option>
+                            <option value="completed">Concluídos</option>
+                            <option value="denied">Negados</option>
+                            <option value="cancelled">Cancelados</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Data</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                            <!-- Orders will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Users Tab -->
+            <div id="users-tab" class="admin-tab">
+                <h2 class="tab-title">Usuários</h2>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Usuário</th>
+                                <th>Criado em</th>
+                                <th>Último Login</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+                            <!-- Users will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Chat Tab -->
+            <div id="chat-tab" class="admin-tab">
+                <h2 class="tab-title">Chat com Clientes</h2>
+                <div class="chat-container">
+                    <div class="chat-sidebar">
+                        <div class="chat-header">
+                            <div class="chat-filter">
+                                <select id="chat-filter">
+                                    <option value="all">Todos os chats</option>
+                                    <option value="active">Chats ativos</option>
+                                    <option value="completed">Chats concluídos</option>
+                                </select>
+                            </div>
+                            <div class="chat-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="search-chat" placeholder="Pesquisar...">
+                            </div>
+                        </div>
+                        <div id="chat-list" class="chat-list">
+                            <!-- Chat list will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="chat-main">
+                        <div class="chat-header">
+                            <div class="chat-user-info">
+                                <div class="chat-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="chat-user-details">
+                                    <h3 id="chat-user-name">Selecione um chat</h3>
+                                    <div id="chat-user-status" class="chat-user-status">Offline</div>
+                                </div>
+                            </div>
+                            <div class="chat-actions">
+                                <button id="view-order-btn" class="btn-small btn-primary">Ver Pedido</button>
+                                <button id="mark-completed-btn" class="btn-small btn-success">Marcar como Concluído</button>
+                            </div>
+                        </div>
+                        <div id="chat-messages" class="chat-messages">
+                            <div class="no-chat-selected">
+                                <i class="fas fa-comments"></i>
+                                <p>Selecione um chat para começar</p>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <textarea id="chat-message-input" placeholder="Digite sua mensagem..." disabled></textarea>
+                            <button id="send-message-btn" disabled><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Product Modal -->
+    <div id="product-modal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="product-modal-title">Adicionar Produto</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="product-form">
                     <div class="form-group">
                         <label for="product-name">Nome do Produto</label>
                         <input type="text" id="product-name" required>
@@ -38,50 +296,168 @@
                         <input type="number" id="product-price" step="0.01" min="0" required>
                     </div>
                     <div class="form-group">
-                        <label for="product-emoji">Emoji</label>
-                        <input type="text" id="product-emoji" placeholder="Ex: 🎮" required>
-                    </div>
-                    <div class="form-group">
                         <label for="product-category">Categoria</label>
                         <select id="product-category" required>
                             <option value="jogos">Jogos</option>
-                            <option value="recargas">Recargas</option>
-                            <option value="seguidores">Seguidores</option>
                             <option value="giftcards">Gift Cards</option>
-                            <option value="contas">Contas & Skins</option>
+                            <option value="seguidores">Seguidores</option>
+                            <option value="recargas">Recargas</option>
+                            <option value="contas">Contas</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="product-description">Descrição</label>
-                        <textarea id="product-description" rows="3"></textarea>
+                        <label for="product-emoji">Emoji</label>
+                        <input type="text" id="product-emoji" placeholder="🎮" required>
                     </div>
-                    <button type="submit" class="btn-primary">Adicionar Produto</button>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary close-modal">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                    </div>
                 </form>
             </div>
-
-            <div class="admin-card">
-                <h3>Produtos Cadastrados</h3>
-                <div id="products-list" class="admin-list">
-                    <!-- Lista de produtos será carregada via JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Order Modal -->
+    <div id="order-modal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalhes do Pedido</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="order-details">
+                    <div class="order-info">
+                        <div class="info-group">
+                            <label>ID do Pedido:</label>
+                            <span id="order-id"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Cliente:</label>
+                            <span id="order-customer"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Data:</label>
+                            <span id="order-date"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Status:</label>
+                            <span id="order-status" class="status-badge"></span>
+                        </div>
+                    </div>
+                    <div class="order-items">
+                        <h4>Itens do Pedido</h4>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="order-items-body">
+                                <!-- Order items will be loaded here -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                                    <td>R$ <span id="order-total">0.00</span></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary close-modal">Fechar</button>
+                    <button id="deny-order-btn" class="btn-danger">Negar Pedido</button>
+                    <button id="approve-order-btn" class="btn-success">Aprovar Pedido</button>
+                    <button id="chat-with-customer-btn" class="btn-primary">Chat com Cliente</button>
                 </div>
             </div>
-        </section>
-
-        <section class="admin-section">
-            <h2 class="section-title">Carrinho de Compras</h2>
-            <div class="admin-card">
-                <h3>Produtos no Carrinho</h3>
-                <div id="admin-cart-items" class="admin-list">
-                    <!-- Itens do carrinho serão carregados via JavaScript -->
+        </div>
+    </div>
+    
+    <!-- User Modal -->
+    <div id="user-modal" class="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalhes do Usuário</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="user-details">
+                    <div class="user-info">
+                        <div class="info-group">
+                            <label>ID:</label>
+                            <span id="user-id"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Nome:</label>
+                            <span id="user-name"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Usuário:</label>
+                            <span id="user-username"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Email:</label>
+                            <span id="user-email"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Criado em:</label>
+                            <span id="user-created"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Último Login:</label>
+                            <span id="user-last-login"></span>
+                        </div>
+                    </div>
+                    <div class="user-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Pedidos</h3>
+                                <p id="user-orders-count">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Total Gasto</h3>
+                                <p id="user-total-spent">R$ 0.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-orders">
+                        <h4>Pedidos do Usuário</h4>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Data</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="user-orders-body">
+                                <!-- User orders will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary close-modal">Fechar</button>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer class="admin-footer">
-        <p>© 2023 CartoonMax - Painel Administrativo</p>
-    </footer>
-
+        </div>
+    </div>
+    
     <script src="admin.js"></script>
+    <script src="chat.js"></script>
 </body>
 </html>
