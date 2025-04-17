@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CartoonMax - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Cartoon<span>Max</span></h1>
+            <p>Faça login ou cadastre-se para continuar</p>
+        </div>
+
+        <div class="tabs" id="tabs">
+            <button class="tab-btn active" data-tab="login">Login</button>
+            <button class="tab-btn" data-tab="register">Cadastro</button>
+        </div>
+
+        <div class="tab-content active" id="login-tab">
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-username"><i class="fas fa-user"></i> Nome de Usuário</label>
+                    <input type="text" id="login-username" placeholder="Seu nome de usuário" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password"><i class="fas fa-lock"></i> Senha</label>
+                    <input type="password" id="login-password" placeholder="Sua senha" required>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </button>
+                <div id="login-message"></div>
+            </form>
+        </div>
+
+        <div class="tab-content" id="register-tab">
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name"><i class="fas fa-user-circle"></i> Nome Completo</label>
+                    <input type="text" id="register-name" placeholder="Seu nome completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-username"><i class="fas fa-user"></i> Nome de Usuário</label>
+                    <input type="text" id="register-username" placeholder="Escolha um nome de usuário" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password"><i class="fas fa-lock"></i> Senha</label>
+                    <input type="password" id="register-password" placeholder="Crie uma senha forte" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password"><i class="fas fa-check-circle"></i> Confirmar Senha</label>
+                    <input type="password" id="register-confirm-password" placeholder="Confirme sua senha" required>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-user-plus"></i> Cadastrar
+                </button>
+                <div id="register-message"></div>
+            </form>
+        </div>
+
+        <div class="login-footer">
+            <a href="index.html"><i class="fas fa-home"></i> Voltar para a loja</a>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CartoonMax - Painel Administrativo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <header class="admin-header">
+        <div class="logo">
+            <h1>Cartoon<span>Max</span> Admin</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Voltar para Loja</a></li>
+                <li><button class="logout-btn">Sair <i class="fas fa-sign-out-alt"></i></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <section class="admin-section">
+            <h2 class="section-title">Gerenciar Produtos</h2>
+            
+            <div class="admin-card">
+                <h3>Adicionar Novo Produto</h3>
+                <form id="add-product-form">
+                    <div class="form-group">
+                        <label for="product-name">Nome do Produto</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price">Preço (R$)</label>
+                        <input type="number" id="product-price" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-emoji">Emoji</label>
+                        <input type="text" id="product-emoji" placeholder="Ex: 🎮" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-category">Categoria</label>
+                        <select id="product-category" required>
+                            <option value="jogos">Jogos</option>
+                            <option value="recargas">Recargas</option>
+                            <option value="seguidores">Seguidores</option>
+                            <option value="giftcards">Gift Cards</option>
+                            <option value="contas">Contas & Skins</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Descrição</label>
+                        <textarea id="product-description" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Adicionar Produto</button>
+                </form>
+            </div>
+
+            <div class="admin-card">
+                <h3>Produtos Cadastrados</h3>
+                <div id="products-list" class="admin-list">
+                    <!-- Lista de produtos será carregada via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="admin-section">
+            <h2 class="section-title">Carrinho de Compras</h2>
+            <div class="admin-card">
+                <h3>Produtos no Carrinho</h3>
+                <div id="admin-cart-items" class="admin-list">
+                    <!-- Itens do carrinho serão carregados via JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="admin-footer">
+        <p>© 2023 CartoonMax - Painel Administrativo</p>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>
